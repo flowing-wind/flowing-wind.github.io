@@ -35,24 +35,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.3" />
-<meta property="og:title" content="404: Page not found" />
+<meta property="og:title" content="Using FatFs in SD card" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Eric’s personal blog." />
-<meta property="og:description" content="Eric’s personal blog." />
-<link rel="canonical" href="http://localhost:4000/404.html" />
-<meta property="og:url" content="http://localhost:4000/404.html" />
+<meta name="description" content="SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer. This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides." />
+<meta property="og:description" content="SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer. This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides." />
+<link rel="canonical" href="http://localhost:4000/posts/Using-FatFs-in-SD-card/" />
+<meta property="og:url" content="http://localhost:4000/posts/Using-FatFs-in-SD-card/" />
 <meta property="og:site_name" content="Flowing Wind" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-06T21:21:15+08:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="404: Page not found" />
+<meta property="twitter:title" content="Using FatFs in SD card" />
 <meta name="twitter:site" content="@twitter_username" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Eric’s personal blog.","headline":"404: Page not found","url":"http://localhost:4000/404.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-01-06T21:21:15+08:00","datePublished":"2024-01-06T21:21:15+08:00","description":"SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer. This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides.","headline":"Using FatFs in SD card","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"},"url":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>404: Page not found | Flowing Wind
+  <title>Using FatFs in SD card | Flowing Wind
   </title>
 
   <!--
@@ -103,6 +104,8 @@
 
   <link rel="stylesheet" href="/assets/css/jekyll-theme-chirpy.css">
 
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.21.3/dist/tocbot.min.css">
   
 
   
@@ -424,8 +427,10 @@
           
         
           
+        
+          
             
-              <span>404: Page not found</span>
+              <span>Using FatFs in SD card</span>
             
 
           
@@ -439,7 +444,7 @@
     </button>
 
     <div id="topbar-title">
-      404: Page not found
+      Post
     </div>
 
     <button type="button" id="search-trigger" class="btn btn-link">
@@ -493,6 +498,85 @@
 
 
 
+  
+  
+
+  <!-- CDN URL -->
+  
+
+  <!-- Add image path -->
+  
+
+  
+    
+      
+      
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+
+  
+
 
 <!-- Add header for code snippets -->
 
@@ -507,6 +591,38 @@
   
   
 
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
   
 
   
@@ -533,21 +649,240 @@
 
 
 <article class="px-1">
+  <header>
+    <h1 data-toc-skip>Using FatFs in SD card</h1>
+
+    <div class="post-meta text-muted">
+      <!-- published date -->
+      <span>
+        Posted
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
   
-    
-    
-    <h1 class="dynamic-title">
-      404: Page not found
-    </h1>
-    <div class="content">
+  data-ts="1704547275"
+  data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  Jan  6, 2024
+</time>
+
+      </span>
+
+      <!-- lastmod date -->
       
 
+      
+
+      <div class="d-flex justify-content-between">
+        <!-- author(s) -->
+        <span>
+          
+
+          By
+
+          <em>
+            
+              <a href="https://github.com/flowing-wind">Eric_yang</a>
+            
+          </em>
+        </span>
+
+        <!-- read time -->
+        <!-- Calculate the post's reading time, and display the word count in tooltip -->
 
 
-<p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist.</p>
+
+<!-- words per minute -->
+
+
+
+
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="185 words"
+>
+  <em>1 min</em> read</span>
+
+      </div>
+      <!-- .d-flex -->
+    </div>
+    <!-- .post-meta -->
+  </header>
+
+  <div class="content">
+    <p>SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer.<br />
+This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides.</p>
+
+<h2 id="prerequisites"><span class="me-2">Prerequisites</span><a href="#prerequisites" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Before start, make sure you have the following things:</p>
+<ul>
+  <li>Hardware:
+    <ul>
+      <li>An STM32 board with an SD card socket</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote class="prompt-tip">
+  <p>Here we use STM32F407ZGT6 and DAPLink for debugging.</p>
+</blockquote>
+
+<ul>
+  <li>Software:
+    <ul>
+      <li>STM32CubeMX</li>
+      <li>Keil5</li>
+      <li>A serial port assistant</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="sd-card-and-fatfs-configuration"><span class="me-2">SD card and FatFs Configuration</span><a href="#sd-card-and-fatfs-configuration" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>In order to enable the chip to communicate with the SD card, you need to turn on <code class="language-plaintext highlighter-rouge">SDIO</code> in CubeMX.</p>
+
+<ol>
+  <li>Select “Connectivity” $\rightarrow$ “SDIO” and choose “SD 1 bit”.</li>
+  <li>Enable “SDIO global interrupt”.</li>
+</ol>
+
+<blockquote class="prompt-info">
+  <p>You can also choose “SD 4 bits Wide bus” for faster speed, but somehow my device won’t work under such option.</p>
+</blockquote>
+
+<p><a href="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_01.png" class="popup img-link  shimmer"><img src="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_01.png" alt="" loading="lazy"></a></p>
+
+<p>SDIO (Secure Digital Input Output) is a communication interface that allows devices to connect to an SD card and exchange data.</p>
+<blockquote>
+  <p>For more information, check it on <a href="https://en.wikipedia.org/wiki/SD_card#SDIO_cards">wiki</a>.</p>
+</blockquote>
+
+  </div>
+
+  <div class="post-tail-wrapper text-muted">
+    <!-- categories -->
+    
+      <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i>
+        
+          <a href="/categories/stm32/">STM32</a>,
+          <a href="/categories/sd-card/">SD card</a>
+      </div>
+    
+
+    <!-- tags -->
+    
+      <div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i>
+        
+          <a
+            href="/tags/stm32/"
+            class="post-tag no-text-decoration"
+          >STM32</a>
+        
+          <a
+            href="/tags/sd-card/"
+            class="post-tag no-text-decoration"
+          >SD card</a>
+        
+          <a
+            href="/tags/fatfs/"
+            class="post-tag no-text-decoration"
+          >FatFs</a>
+        
+          <a
+            href="/tags/project/"
+            class="post-tag no-text-decoration"
+          >Project</a>
+        
+      </div>
+    
+
+    <div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+      <div class="license-wrapper">
+        
+          
+
+          This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+        
+      </div>
+
+      <!-- Post sharing snippet -->
+
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+
+      
+
+      <a href="https://twitter.com/intent/tweet?text=Using%20FatFs%20in%20SD%20card%20-%20Flowing%20Wind&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FUsing-FatFs-in-SD-card%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Using%20FatFs%20in%20SD%20card%20-%20Flowing%20Wind&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FUsing-FatFs-in-SD-card%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+
+      
+
+      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2FUsing-FatFs-in-SD-card%2F&text=Using%20FatFs%20in%20SD%20card%20-%20Flowing%20Wind" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
+</div>
 
     </div>
-  
+    <!-- .post-tail-bottom -->
+  </div>
+  <!-- div.post-tail-wrapper -->
 </article>
 
 
@@ -692,12 +1027,90 @@
             </div>
 
             
+              
+              
+
+
+
+  <section id="toc-wrapper" class="ps-0 pe-4">
+    <h2 class="panel-heading ps-3 pt-2 mb-2">Contents</h2>
+    <nav id="toc"></nav>
+  </section>
+
+
+            
           </aside>
         </div>
 
         <div class="row">
           <!-- tail -->
           <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              
+              <!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+            
+              
+              <!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  
+  
+
+  
+    <div class="btn btn-outline-primary disabled" aria-label="Older">
+      <p>-</p>
+    </div>
+  
+
+  
+    <div class="btn btn-outline-primary disabled" aria-label="Newer">
+      <p>-</p>
+    </div>
+  
+</nav>
+
+            
+              
+              <!--  The comments switcher -->
+
+
             
 
             <!-- The Footer -->
@@ -968,21 +1381,144 @@
 
   
 
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
 
 
-  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.7.1/dist/jquery.min.js,npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js,npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.7.1/dist/jquery.min.js,npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js,npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.10/dayjs.min.js,npm/dayjs@1.11.10/locale/en.min.js,npm/dayjs@1.11.10/plugin/relativeTime.min.js,npm/dayjs@1.11.10/plugin/localizedFormat.min.js,npm/tocbot@4.21.3/dist/tocbot.min.js,npm/mermaid@10.6.0/dist/mermaid.min.js"></script>
 
 
 
 
 
 
-<script defer src="/assets/js/dist/page.min.js"></script>
+<script defer src="/assets/js/dist/post.min.js"></script>
+
+
+  <!-- MathJax -->
+  <script>
+    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
+    MathJax = {
+      tex: {
+        /* start/end delimiter pairs for in-line math */
+        inlineMath: [
+          ['$', '$'],
+          ['\\(', '\\)']
+        ],
+        /* start/end delimiter pairs for display math */
+        displayMath: [
+          ['$$', '$$'],
+          ['\\[', '\\]']
+        ]
+      }
+    };
+  </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
 
 
 
 
 
+    
+      <!-- mermaid-js loader -->
+<script type="text/javascript">
+  (function () {
+    function updateMermaid(event) {
+      if (event.source === window && event.data && event.data.direction === ModeToggle.ID) {
+        const mode = event.data.message;
+
+        if (typeof mermaid === 'undefined') {
+          return;
+        }
+
+        let expectedTheme = mode === ModeToggle.DARK_MODE ? 'dark' : 'default';
+        let config = { theme: expectedTheme };
+
+        /* Re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */
+        $('.mermaid').each(function () {
+          let svgCode = $(this).prev().children().html();
+          $(this).removeAttr('data-processed');
+          $(this).html(svgCode);
+        });
+
+        mermaid.initialize(config);
+        mermaid.init(undefined, '.mermaid');
+      }
+    }
+
+    let initTheme = 'default';
+    const html = document.documentElement;
+
+    if (
+      (html.hasAttribute('data-mode') && html.getAttribute('data-mode') === 'dark') ||
+      (!html.hasAttribute('data-mode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      initTheme = 'dark';
+    }
+
+    let mermaidConf = {
+      theme: initTheme /* <default|dark|forest|neutral> */
+    };
+
+    /* Create mermaid tag */
+    document.querySelectorAll('pre>code.language-mermaid').forEach((elem) => {
+      const svgCode = elem.textContent;
+      const backup = elem.parentElement;
+      backup.classList.add('unloaded');
+      /* create mermaid node */
+      let mermaid = document.createElement('pre');
+      mermaid.classList.add('mermaid');
+      const text = document.createTextNode(svgCode);
+      mermaid.appendChild(text);
+      backup.after(mermaid);
+    });
+
+    mermaid.initialize(mermaidConf);
+
+    window.addEventListener('message', updateMermaid);
+  })();
+</script>
 
     
 

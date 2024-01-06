@@ -4,7 +4,7 @@
   <id>http://localhost:4000/</id>
   <title>Flowing Wind</title>
   <subtitle>Eric's personal blog.</subtitle>
-  <updated>2024-01-06T13:03:06+08:00</updated>
+  <updated>2024-01-06T23:30:53+08:00</updated>
   <author>
     <name>Eric_yang</name>
     <uri>http://localhost:4000/</uri>
@@ -17,6 +17,46 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Using FatFs in SD card</title>
+    <link href="http://localhost:4000/posts/Using-FatFs-in-SD-card/" rel="alternate" type="text/html" title="Using FatFs in SD card" />
+    <published>2024-01-06T21:21:15+08:00</published>
+  
+    <updated>2024-01-06T21:21:15+08:00</updated>
+  
+    <id>http://localhost:4000/posts/Using-FatFs-in-SD-card/</id>
+    <content src="http://localhost:4000/posts/Using-FatFs-in-SD-card/" />
+    <author>
+      <name>Eric_yang</name>
+    </author>
+
+  
+    
+    <category term="STM32" />
+    
+    <category term="SD card" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer.
+This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides.
+
+Prerequisites
+Before start, make...
+    </summary>
+  
+
+  </entry>
 
 </feed>
 
