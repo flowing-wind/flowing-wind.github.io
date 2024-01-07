@@ -574,6 +574,203 @@
     <!-- combine -->
     
   
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+      
+
+      
+    
+
+    <!-- take out classes -->
+    
+
+    
+    
+
+    
+
+    
+      
+    
+
+    <!-- lazy-load images -->
+    
+
+    
+      <!-- make sure the `<img>` is wrapped by `<a>` -->
+      
+
+      
+        <!-- create the image wrapper -->
+        
+
+        
+        
+      
+    
+
+    <!-- combine -->
+    
+  
 
   
 
@@ -621,6 +818,17 @@
 
       
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
 
     
   
@@ -628,6 +836,27 @@
   
   
 
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
   
 
   
@@ -717,9 +946,9 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="185 words"
+  title="399 words"
 >
-  <em>1 min</em> read</span>
+  <em>2 min</em> read</span>
 
       </div>
       <!-- .d-flex -->
@@ -773,6 +1002,42 @@ This article shows you how to use FatFs in an SD card and displays some function
 <blockquote>
   <p>For more information, check it on <a href="https://en.wikipedia.org/wiki/SD_card#SDIO_cards">wiki</a>.</p>
 </blockquote>
+
+<p>FatFs is an open-source file system middleware. This is integrated in Cube Libraries.</p>
+<ol>
+  <li>Configure FatFs as SD Card mode in “FATFS” in “Middleware and Software Packs”.</li>
+  <li>Select an Input pin for Detect_SDIO.</li>
+</ol>
+
+<blockquote class="prompt-info">
+  <p>The pin can be any available GPIO Input pin if there are no special requirements.</p>
+</blockquote>
+
+<p><a href="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_02.png" class="popup img-link  shimmer"><img src="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_02.png" alt="" loading="lazy"></a></p>
+
+<p>Finally, go to “Project Manager” $\rightarrow$ “Project” $\rightarrow$ “Linker Settings” and increase the Heap and Stack size because we are using FatFs Middleware that requires more memory.</p>
+
+<p><a href="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_03.png" class="popup img-link  shimmer"><img src="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_03.png" alt="" loading="lazy"></a></p>
+
+<p>Now generate code and open it with your IDE, you may probably find the following files in the project:</p>
+
+<p><a href="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_04.png" class="popup img-link w-25 normal shimmer"><img src="https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_04.png" alt=""  loading="lazy"></a></p>
+
+<p>The file <code class="language-plaintext highlighter-rouge">ff.c</code> is particularly important as it defines some commonly used modules of the FAT file system.</p>
+
+<h2 id="fatfs-usage"><span class="me-2">FatFs Usage</span><a href="#fatfs-usage" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>FatFs is a lightweight software library for microcontrollers and embedded systems that implements FAT/exFAT file system support. Most often, FatFs is used in low-power Embedded systems where memory is limited, since the library takes up little space in RAM and program code. In the minimum version, the working code takes from 2 to 10 kB of RAM.</p>
+<blockquote>
+  <p>For more information, check it on <a href="https://en.wikipedia.org/wiki/FatFs">wiki</a>.</p>
+</blockquote>
+
+<p>FatFs offers a range of functions for application use. And now I’m going to demonstrate some basic functions for performing file read and write operations.</p>
+
+<blockquote class="prompt-tip">
+  <p>To access all the functions, see <a href="http://elm-chan.org/fsw/ff/">FatFs Module Library</a>.</p>
+</blockquote>
+
+<h3 id="initialization-and-mounting"><span class="me-2">Initialization and Mounting</span><a href="#initialization-and-mounting" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
   </div>
 

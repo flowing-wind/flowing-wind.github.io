@@ -35,4 +35,34 @@ In order to enable the chip to communicate with the SD card, you need to turn on
 ![](https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_01.png)  
 
 SDIO (Secure Digital Input Output) is a communication interface that allows devices to connect to an SD card and exchange data.
-> For more information, check it on [wiki](https://en.wikipedia.org/wiki/SD_card#SDIO_cards).
+> For more information, check it on [wiki](https://en.wikipedia.org/wiki/SD_card#SDIO_cards).  
+
+FatFs is an open-source file system middleware. This is integrated in Cube Libraries.
+1. Configure FatFs as SD Card mode in "FATFS" in "Middleware and Software Packs".
+2. Select an Input pin for Detect_SDIO.
+
+> The pin can be any available GPIO Input pin if there are no special requirements.
+{: .prompt-info}
+
+![](https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_02.png)
+
+Finally, go to "Project Manager" $\rightarrow$ "Project" $\rightarrow$ "Linker Settings" and increase the Heap and Stack size because we are using FatFs Middleware that requires more memory.
+
+![](https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_03.png)
+
+Now generate code and open it with your IDE, you may probably find the following files in the project:  
+
+![](https://cdn.jsdelivr.net/gh/flowing-wind/Pic@img/img/Using%20FatFs%20in%20SD%20card_04.png){:  .w-25 .normal}  
+
+The file `ff.c` is particularly important as it defines some commonly used modules of the FAT file system.  
+
+## FatFs Usage
+FatFs is a lightweight software library for microcontrollers and embedded systems that implements FAT/exFAT file system support. Most often, FatFs is used in low-power Embedded systems where memory is limited, since the library takes up little space in RAM and program code. In the minimum version, the working code takes from 2 to 10 kB of RAM.  
+> For more information, check it on [wiki](https://en.wikipedia.org/wiki/FatFs).  
+
+FatFs offers a range of functions for application use. And now I'm going to demonstrate some basic functions for performing file read and write operations.
+
+> To access all the functions, see [FatFs Module Library](http://elm-chan.org/fsw/ff/).
+{: .prompt-tip}
+
+### Initialization and Mounting
