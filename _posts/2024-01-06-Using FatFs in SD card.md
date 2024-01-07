@@ -62,7 +62,9 @@ FatFs is a lightweight software library for microcontrollers and embedded system
 
 FatFs offers a range of functions for application use. And now I'm going to demonstrate some basic functions for performing file read and write operations.
 
-> To access all the functions, see [FatFs Module Library](http://elm-chan.org/fsw/ff/).
-{: .prompt-tip}
+> To access all the functions, see FatFs Module Library:   
+> http://elm-chan.org/fsw/ff/  
+> As it is not an HTTPS site, you need to manually copy the link, and assess the risk before accessing.
+{: .prompt-warning}
 
 ### Initialization and Mounting
