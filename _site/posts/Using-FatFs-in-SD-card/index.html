@@ -863,6 +863,38 @@
   
 
   
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
 
   
   
@@ -969,9 +1001,9 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="420 words"
+  title="667 words"
 >
-  <em>2 min</em> read</span>
+  <em>3 min</em> read</span>
 
       </div>
       <!-- .d-flex -->
@@ -1062,7 +1094,57 @@ http://elm-chan.org/fsw/ff/<br />
 As it is not an HTTPS site, you need to manually copy the link, and assess the risk before accessing.</p>
 </blockquote>
 
-<h3 id="initialization-and-mounting"><span class="me-2">Initialization and Mounting</span><a href="#initialization-and-mounting" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<h3 id="mounting"><span class="me-2">Mounting</span><a href="#mounting" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>In general, mounting is a process by which a computer’s operating system makes files and directories on a storage device available for users to access via the computer’s file system.</p>
+
+<p>Therefore, we need to mount the SD card so that the file on it can be accessed. Function <code class="language-plaintext highlighter-rouge">f_mount</code> serves as means to accomplish this task.</p>
+
+<h4 id="declaration-and-parameters"><span class="me-2">Declaration and Parameters</span><a href="#declaration-and-parameters" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">FRESULT</span> <span class="nf">f_mount</span> <span class="p">(</span>
+  <span class="n">FATFS</span><span class="o">*</span>       <span class="n">fs</span><span class="p">,</span>    <span class="cm">/* [IN] Filesystem object */</span>
+  <span class="k">const</span> <span class="n">TCHAR</span><span class="o">*</span> <span class="n">path</span><span class="p">,</span>  <span class="cm">/* [IN] Logical drive number */</span>
+  <span class="n">BYTE</span>         <span class="n">opt</span>    <span class="cm">/* [IN] Initialization option */</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
+<dl>
+  <dt>fs</dt>
+  <dd>Pointer to the filesystem object to be registered and cleared. Null pointer unregisters the registered filesystem object.</dd>
+  <dt>path</dt>
+  <dd>Pointer to the null-terminated string that specifies the logical drive. The string without drive number means the default drive.</dd>
+  <dt>opt</dt>
+  <dd>Mounting option. 0: Do not mount now (to be mounted on the first access to the volume), 1: Force mounted the volume to check if it is ready to work.</dd>
+</dl>
+
+<h4 id="code"><span class="me-2">Code</span><a href="#code" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<p>Firstly, create a work area (filesystem object) for the local driver.</p>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">FATFS</span> <span class="n">fs</span><span class="p">;</span>   <span class="cm">/* Work area (filesystem object) for logical drive */</span>
+</pre></td></tr></tbody></table></code></div></div>
+<p>Next, specify the path name. You can use any string you like, or just the default configuration.</p>
+<blockquote class="prompt-info">
+  <p>For more formatting details, please refer to the online documentation.<br />
+http://elm-chan.org/fsw/ff/doc/filename.html</p>
+</blockquote>
+
+<p>Finally, choose the mounting option. Typically, we opt for 0 (Do not mount now).</p>
+
+<p>The entire code may look like this:</p>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">FATFS</span> <span class="n">fs</span><span class="p">;</span>   <span class="cm">/* Work area (filesystem object) for logical drive */</span>
+<span class="n">f_mount</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">fs</span><span class="p">,</span><span class="s">"0:"</span> <span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
 
   </div>
 

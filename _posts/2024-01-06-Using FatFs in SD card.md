@@ -67,4 +67,42 @@ FatFs offers a range of functions for application use. And now I'm going to demo
 > As it is not an HTTPS site, you need to manually copy the link, and assess the risk before accessing.
 {: .prompt-warning}
 
-### Initialization and Mounting
+### Mounting
+In general, mounting is a process by which a computer's operating system makes files and directories on a storage device available for users to access via the computer's file system.  
+
+Therefore, we need to mount the SD card so that the file on it can be accessed. Function `f_mount` serves as means to accomplish this task.  
+
+#### Declaration and Parameters
+```c
+FRESULT f_mount (
+  FATFS*       fs,    /* [IN] Filesystem object */
+  const TCHAR* path,  /* [IN] Logical drive number */
+  BYTE         opt    /* [IN] Initialization option */
+);
+```
+fs
+: Pointer to the filesystem object to be registered and cleared. Null pointer unregisters the registered filesystem object.
+
+path
+: Pointer to the null-terminated string that specifies the logical drive. The string without drive number means the default drive.
+
+opt
+: Mounting option. 0: Do not mount now (to be mounted on the first access to the volume), 1: Force mounted the volume to check if it is ready to work.
+
+#### Code
+Firstly, create a work area (filesystem object) for the local driver.
+```c
+FATFS fs;   /* Work area (filesystem object) for logical drive */
+```
+Next, specify the path name. You can use any string you like, or just the default configuration.
+> For more formatting details, please refer to the online documentation.  
+> http://elm-chan.org/fsw/ff/doc/filename.html
+{: .prompt-info}
+
+Finally, choose the mounting option. Typically, we opt for 0 (Do not mount now).  
+
+The entire code may look like this:
+```c
+FATFS fs;   /* Work area (filesystem object) for logical drive */
+f_mount (&fs,"0:" ,0);
+```
