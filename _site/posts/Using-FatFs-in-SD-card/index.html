@@ -48,7 +48,7 @@
 <meta property="twitter:title" content="Using FatFs in SD card" />
 <meta name="twitter:site" content="@twitter_username" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-01-07T10:47:23+08:00","datePublished":"2024-01-06T21:21:15+08:00","description":"SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer. This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides.","headline":"Using FatFs in SD card","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"},"url":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-01-13T21:57:28+08:00","datePublished":"2024-01-06T21:21:15+08:00","description":"SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer. This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides.","headline":"Using FatFs in SD card","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"},"url":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -855,6 +855,28 @@
 
       
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
 
     
   
@@ -870,6 +892,28 @@
       
         
         
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
       
 
       
@@ -952,13 +996,13 @@
 
 <time
   
-  data-ts="1704595643"
+  data-ts="1705154248"
   data-df="ll"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  Jan  7, 2024
+  Jan 13, 2024
 </time>
 
         </span>
@@ -1001,9 +1045,9 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="667 words"
+  title="994 words"
 >
-  <em>3 min</em> read</span>
+  <em>5 min</em> read</span>
 
       </div>
       <!-- .d-flex -->
@@ -1146,6 +1190,103 @@ http://elm-chan.org/fsw/ff/doc/filename.html</p>
 <span class="n">f_mount</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">fs</span><span class="p">,</span><span class="s">"0:"</span> <span class="p">,</span><span class="mi">0</span><span class="p">);</span>
 </pre></td></tr></tbody></table></code></div></div>
 
+<h3 id="open-a-file"><span class="me-2">Open a file</span><a href="#open-a-file" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>The <code class="language-plaintext highlighter-rouge">f_open</code> function opens a file and creates a file object. It is the identifier for subsequent read/write operations to the file. After the function succeeded, the file object is valid. If the function failed, the file object is set invalid.</p>
+
+<h4 id="declaration-and-parameters-1"><span class="me-2">Declaration and Parameters</span><a href="#declaration-and-parameters-1" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">FRESULT</span> <span class="nf">f_open</span> <span class="p">(</span>
+  <span class="n">FIL</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span>           <span class="cm">/* [OUT] Pointer to the file object structure */</span>
+  <span class="k">const</span> <span class="n">TCHAR</span><span class="o">*</span> <span class="n">path</span><span class="p">,</span> <span class="cm">/* [IN] File name */</span>
+  <span class="n">BYTE</span> <span class="n">mode</span>          <span class="cm">/* [IN] Mode flags */</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
+<dl>
+  <dt>fp</dt>
+  <dd>Pointer to the blank file object structure.</dd>
+  <dt>path</dt>
+  <dd>Pointer to the null-terminated string that specifies the file name to open or create.</dd>
+  <dt>mode</dt>
+  <dd>Mode flags that specifies the type of access and open method for the file. It is specified by a combination of following flags.</dd>
+</dl>
+
+<div class="table-wrapper"><table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Flags</th>
+      <th style="text-align: left">Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">FA_READ</td>
+      <td style="text-align: left">Specifies read access to the file. Data can be read from the file.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FA_WRITE</td>
+      <td style="text-align: left">Specifies write access to the file. Data can be written to the file. Combine with FA_READ for read-write access.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FA_OPEN_EXISTING</td>
+      <td style="text-align: left">Opens a file. The function fails if the file is not existing. (Default)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FA_CREATE_NEW</td>
+      <td style="text-align: left">Creates a new file. The function fails with FR_EXIST if the file is existing.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FA_CREATE_ALWAYS</td>
+      <td style="text-align: left">Creates a new file. If the file is existing, it will be truncated and overwritten.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FA_OPEN_ALWAYS</td>
+      <td style="text-align: left">Opens the file if it is existing. If not, a new file will be created.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">FA_OPEN_APPEND</td>
+      <td style="text-align: left">Same as FA_OPEN_ALWAYS except the read/write pointer is set end of the file.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h4 id="code-1"><span class="me-2">Code</span><a href="#code-1" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<p>Create a file object first.</p>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">FIL</span> <span class="n">fil</span><span class="p">;</span>        <span class="cm">/* File object */</span>
+</pre></td></tr></tbody></table></code></div></div>
+<p>Assume there is a file named <code class="language-plaintext highlighter-rouge">example.txt</code> in the root directory, and we want to have read access to the file.</p>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">f_open</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">fil</span><span class="p">,</span> <span class="s">"example.txt"</span><span class="p">,</span> <span class="n">FA_READ</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
+<p><code class="language-plaintext highlighter-rouge">f_open</code> also gives return values, you can use them to determine whether the function is working correctly.</p>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">if</span> <span class="p">(</span><span class="n">f_open</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fil</span><span class="p">,</span> <span class="s">"example.txt"</span><span class="p">,</span> <span class="n">FA_READ</span><span class="p">)</span> <span class="o">!=</span> <span class="n">FR_OK</span><span class="p">){</span>
+	<span class="cm">/* Error Feedback */</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+	<span class="cm">/* something you would like to do */</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="read-a-file"><span class="me-2">Read a file</span><a href="#read-a-file" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
   </div>
 
   <div class="post-tail-wrapper text-muted">
@@ -1287,14 +1428,14 @@ http://elm-chan.org/fsw/ff/doc/filename.html</p>
         
         
         <li class="text-truncate lh-lg">
-          <a href="/posts/%E7%8E%B0%E4%BB%A3%E8%AF%97%E4%B8%80%E9%A6%96/">现代诗一首</a>
+          <a href="/posts/Using-FatFs-in-SD-card/">Using FatFs in SD card</a>
         </li>
       
         
         
         
         <li class="text-truncate lh-lg">
-          <a href="/posts/Using-FatFs-in-SD-card/">Using FatFs in SD card</a>
+          <a href="/posts/%E7%8E%B0%E4%BB%A3%E8%AF%97%E4%B8%80%E9%A6%96/">现代诗一首</a>
         </li>
       
     </ul>

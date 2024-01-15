@@ -106,3 +106,54 @@ The entire code may look like this:
 FATFS fs;   /* Work area (filesystem object) for logical drive */
 f_mount (&fs,"0:" ,0);
 ```
+
+### Open a file
+The `f_open` function opens a file and creates a file object. It is the identifier for subsequent read/write operations to the file. After the function succeeded, the file object is valid. If the function failed, the file object is set invalid.
+
+#### Declaration and Parameters
+```c
+FRESULT f_open (
+  FIL* fp,           /* [OUT] Pointer to the file object structure */
+  const TCHAR* path, /* [IN] File name */
+  BYTE mode          /* [IN] Mode flags */
+);
+```
+fp
+: Pointer to the blank file object structure.
+
+path
+: Pointer to the null-terminated string that specifies the file name to open or create.
+
+mode
+: Mode flags that specifies the type of access and open method for the file. It is specified by a combination of following flags.
+
+| Flags | Meaning |
+|:------|:--------|
+| FA_READ | Specifies read access to the file. Data can be read from the file.|
+| FA_WRITE | Specifies write access to the file. Data can be written to the file. Combine with FA_READ for read-write access.|
+| FA_OPEN_EXISTING | Opens a file. The function fails if the file is not existing. (Default) |
+| FA_CREATE_NEW | Creates a new file. The function fails with FR_EXIST if the file is existing. |
+| FA_CREATE_ALWAYS | Creates a new file. If the file is existing, it will be truncated and overwritten. |
+| FA_OPEN_ALWAYS | Opens the file if it is existing. If not, a new file will be created. |
+| FA_OPEN_APPEND | Same as FA_OPEN_ALWAYS except the read/write pointer is set end of the file. |
+
+#### Code
+Create a file object first.
+```c
+FIL fil;        /* File object */
+```
+Assume there is a file named `example.txt` in the root directory, and we want to have read access to the file.
+```c
+f_open (&fil, "example.txt", FA_READ);
+```
+`f_open` also gives return values, you can use them to determine whether the function is working correctly.
+```c
+if (f_open(&fil, "example.txt", FA_READ) != FR_OK){
+	/* Error Feedback */
+}
+else {
+	/* something you would like to do */
+}
+```
+
+### Read a file
