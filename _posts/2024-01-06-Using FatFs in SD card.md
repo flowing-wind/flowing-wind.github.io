@@ -157,3 +157,72 @@ else {
 ```
 
 ### Read a file
+The `f_read` function reads data from a file.
+#### Declaration and Parameters
+```c
+FRESULT f_read (
+  FIL* fp,     /* [IN] File object */
+  void* buff,  /* [OUT] Buffer to store read data */
+  UINT btr,    /* [IN] Number of bytes to read */
+  UINT* br     /* [OUT] Number of bytes read */
+);
+```
+fp
+: Pointer to the open file object.
+
+buff
+: Pointer to the buffer to store the read data.
+
+btr
+: Number of bytes to read in range of **UINT** type. If the file needs to be read fast, it should be read in large chunk as possible.
+
+br
+: Pointer to the **UINT** variable that receives number of bytes read. This value is always valid after the function call regardless of the function return code. If the return value is equal to btr, the function return code should be FR_OK.
+
+#### Code
+Create the necessary variables before using the function.  
+It is worth noting that if you are implementing this in a project, it's  advisable to define 'btr' as a constant.   
+
+```c
+/* btr, usually the same size as buffer */
+#define buff_size 64
+char buffer[buff_size];  // Buffer to store the read data
+UINT br;                 // File read count
+```
+Then write the function:   
+```c
+f_read (&fil, buffer, buffer_size, &br);
+```
+
+### Write data
+The `f_write` writes data to a file.  
+`f_write` is quite similar to `f_read`, as most of the parameters are the same.
+
+#### Declaration and Parameters
+```c
+FRESULT f_write (
+  FIL* fp,          /* [IN] Pointer to the file object structure */
+  const void* buff, /* [IN] Pointer to the data to be written */
+  UINT btw,         /* [IN] Number of bytes to write */
+  UINT* bw          /* [OUT] Pointer to the variable to return number of bytes written */
+);
+```
+fp
+: Pointer to the open file object structure.
+
+buff
+: Pointer to the data to be written.
+
+btw
+: Specifies number of bytes to write in range of **UINT** type. If the data needs to be written fast, it should be written in large chunk as possible.
+
+bw
+: Pointer to the **UINT** variable that receives the number of bytes written. This value is always valid after the function call regardless of the function return code. If the return value is equal to btw, the function return code should be FR_OK.
+
+#### Code
+Suppose you need to write "Hello World" to the file:  
+```c
+UINT bw;
+f_write (&fil, "Hello World", sizeof("Hello World"), &bw);
+```
+

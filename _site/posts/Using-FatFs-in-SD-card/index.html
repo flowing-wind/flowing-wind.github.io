@@ -48,7 +48,7 @@
 <meta property="twitter:title" content="Using FatFs in SD card" />
 <meta name="twitter:site" content="@twitter_username" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-01-13T21:57:28+08:00","datePublished":"2024-01-06T21:21:15+08:00","description":"SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer. This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides.","headline":"Using FatFs in SD card","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"},"url":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-01-15T21:12:29+08:00","datePublished":"2024-01-06T21:21:15+08:00","description":"SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer. This article shows you how to use FatFs in an SD card and displays some functions that FatFs provides.","headline":"Using FatFs in SD card","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"},"url":"http://localhost:4000/posts/Using-FatFs-in-SD-card/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -877,6 +877,17 @@
 
       
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
 
     
   
@@ -892,6 +903,50 @@
       
         
         
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
       
 
       
@@ -996,13 +1051,13 @@
 
 <time
   
-  data-ts="1705154248"
+  data-ts="1705324349"
   data-df="ll"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  Jan 13, 2024
+  Jan 15, 2024
 </time>
 
         </span>
@@ -1045,9 +1100,9 @@
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="994 words"
+  title="1404 words"
 >
-  <em>5 min</em> read</span>
+  <em>7 min</em> read</span>
 
       </div>
       <!-- .d-flex -->
@@ -1286,6 +1341,97 @@ http://elm-chan.org/fsw/ff/doc/filename.html</p>
 </pre></td></tr></tbody></table></code></div></div>
 
 <h3 id="read-a-file"><span class="me-2">Read a file</span><a href="#read-a-file" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>The <code class="language-plaintext highlighter-rouge">f_read</code> function reads data from a file.</p>
+<h4 id="declaration-and-parameters-2"><span class="me-2">Declaration and Parameters</span><a href="#declaration-and-parameters-2" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">FRESULT</span> <span class="nf">f_read</span> <span class="p">(</span>
+  <span class="n">FIL</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span>     <span class="cm">/* [IN] File object */</span>
+  <span class="kt">void</span><span class="o">*</span> <span class="n">buff</span><span class="p">,</span>  <span class="cm">/* [OUT] Buffer to store read data */</span>
+  <span class="n">UINT</span> <span class="n">btr</span><span class="p">,</span>    <span class="cm">/* [IN] Number of bytes to read */</span>
+  <span class="n">UINT</span><span class="o">*</span> <span class="n">br</span>     <span class="cm">/* [OUT] Number of bytes read */</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
+<dl>
+  <dt>fp</dt>
+  <dd>Pointer to the open file object.</dd>
+  <dt>buff</dt>
+  <dd>Pointer to the buffer to store the read data.</dd>
+  <dt>btr</dt>
+  <dd>Number of bytes to read in range of <strong>UINT</strong> type. If the file needs to be read fast, it should be read in large chunk as possible.</dd>
+  <dt>br</dt>
+  <dd>Pointer to the <strong>UINT</strong> variable that receives number of bytes read. This value is always valid after the function call regardless of the function return code. If the return value is equal to btr, the function return code should be FR_OK.</dd>
+</dl>
+
+<h4 id="code-2"><span class="me-2">Code</span><a href="#code-2" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<p>Create the necessary variables before using the function.<br />
+It is worth noting that if you are implementing this in a project, it’s  advisable to define ‘btr’ as a constant.</p>
+
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="cm">/* btr, usually the same size as buffer */</span>
+<span class="cp">#define buff_size 64
+</span><span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="n">buff_size</span><span class="p">];</span>  <span class="c1">// Buffer to store the read data</span>
+<span class="n">UINT</span> <span class="n">br</span><span class="p">;</span>                 <span class="c1">// File read count</span>
+</pre></td></tr></tbody></table></code></div></div>
+<p>Then write the function:</p>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="n">f_read</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">fil</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">buffer_size</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">br</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
+
+<h3 id="write-data"><span class="me-2">Write data</span><a href="#write-data" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>The <code class="language-plaintext highlighter-rouge">f_write</code> writes data to a file.<br />
+<code class="language-plaintext highlighter-rouge">f_write</code> is quite similar to <code class="language-plaintext highlighter-rouge">f_read</code>, as most of the parameters are the same.</p>
+
+<h4 id="declaration-and-parameters-3"><span class="me-2">Declaration and Parameters</span><a href="#declaration-and-parameters-3" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="n">FRESULT</span> <span class="nf">f_write</span> <span class="p">(</span>
+  <span class="n">FIL</span><span class="o">*</span> <span class="n">fp</span><span class="p">,</span>          <span class="cm">/* [IN] Pointer to the file object structure */</span>
+  <span class="k">const</span> <span class="kt">void</span><span class="o">*</span> <span class="n">buff</span><span class="p">,</span> <span class="cm">/* [IN] Pointer to the data to be written */</span>
+  <span class="n">UINT</span> <span class="n">btw</span><span class="p">,</span>         <span class="cm">/* [IN] Number of bytes to write */</span>
+  <span class="n">UINT</span><span class="o">*</span> <span class="n">bw</span>          <span class="cm">/* [OUT] Pointer to the variable to return number of bytes written */</span>
+<span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
+<dl>
+  <dt>fp</dt>
+  <dd>Pointer to the open file object structure.</dd>
+  <dt>buff</dt>
+  <dd>Pointer to the data to be written.</dd>
+  <dt>btw</dt>
+  <dd>Specifies number of bytes to write in range of <strong>UINT</strong> type. If the data needs to be written fast, it should be written in large chunk as possible.</dd>
+  <dt>bw</dt>
+  <dd>Pointer to the <strong>UINT</strong> variable that receives the number of bytes written. This value is always valid after the function call regardless of the function return code. If the return value is equal to btw, the function return code should be FR_OK.</dd>
+</dl>
+
+<h4 id="code-3"><span class="me-2">Code</span><a href="#code-3" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4>
+<p>Suppose you need to write “Hello World” to the file:</p>
+<div class="language-c highlighter-rouge"><div class="code-header">
+        <span data-label-text="C"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">UINT</span> <span class="n">bw</span><span class="p">;</span>
+<span class="n">f_write</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">fil</span><span class="p">,</span> <span class="s">"Hello World"</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">bw</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></div></div>
+
 
   </div>
 
