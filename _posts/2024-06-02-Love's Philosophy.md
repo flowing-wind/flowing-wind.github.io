@@ -1,8 +1,12 @@
 ---
 title: Love's Philosophy
+description: To whom?
 date: 2024-06-02 12:30:00 +0800
 categories: [Literature, Poem]
 tags: [Literature, Poem]
+image:
+  path: https://cdn.jsdelivr.net/gh/flowing-wind/img@main/img/Tsuki%20ga%20Kirei.jpg
+  alt: 月がきれい
 ---
 
 <font face="Courier" style="font-size: 40px;">

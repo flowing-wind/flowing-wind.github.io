@@ -1,10 +1,14 @@
 ---
 title: Using FatFs in SD card
+description: In case of Forgetfulness.
 date: 2024-01-06 21:21:15 +0800
 categories: [STM32, SD card]
 tags: [STM32, SD card, FatFs]
 math: true
 mermaid: true
+image:
+  path: https://cdn.jsdelivr.net/gh/flowing-wind/img@main/img/Dreamscape.jpg
+  alt: Dreamscape
 ---
 
 SD card is a convenient solution for storing large amounts of data and many STM32 products include the proper hardware interface. Using a standard file system to write data on an SD card ensures that the data is easily accessible on another device or computer.  
