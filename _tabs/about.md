@@ -4,32 +4,24 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-<pre style="font-family: 'Comic Sans MS'; font-size: 18px;">Here is no water but only rock
-Rock and no water and the sandy road
-The road winding above among the mountains
-Which are mountains of rock without water
-If there were water we should stop and drink
-Amongst the rock one cannot stop or think 
-Sweat is dry and feet are in the sand
-If there were only water amongst the rock
-Dead mountain mouth of carious teeth that cannot spit
-Here one can neither stand nor lie nor sit
-There is not even silence in the mountains
-But dry sterile thunder without rain
-There is not even solitude in the mountains
-But red sullen faces sneer and snarl
-From doors of mudcracked houses
-If there were water
-And no rock
-If there were rock
-And also water
-And water
-A spring
-A pool among the rock
-If there were the sound of water only
-Not the cicada
-And dry grass singing
-But sound of water over a rock
-Where the hermit-thrush sings in the pine trees
-Drip drop drip drop drop drop drop
-But there is no water </pre>
+Ciallo～(∠・ω< )⌒★  
+This is Flowing-Wind, and welcome to the blog!  
+
+## 我是谁？
+- 一名普通的高中生。
+- INFP
+- (EECS) 什么都会一点，但又好像什么都不会。
+- 梦想成为一名**真 &middot; 全栈工程师**，当然主业还得是 **Mixed Signal IC Designer.**
+- 基本不玩手游，经常在 **Steam** 出没，偶尔打 **osu!** 或者推 **gal** (我~~不~~是柚子厨).
+- 喜欢【风】这个意象，喜欢在网络上漫无目的地【流浪】  
+  于是取日语中的单词 “<b><ruby>風来坊<rt>ふうらいぼう</rt></ruby></b>” (意为流浪者)，将 “坊” 改为 “子”，以 “<b><ruby>風来子<rt>ふうらいこ</rt></ruby></b>” (**fuuraiko**) 作为网名，英文译为 "**Flowing-Wind**".
+- 5L2g6Zeu5oiR5LuA5LmI5piv6JCd6I6J5o6n77yf5oiR5LiN55+l6YGT5ZWK77yB
+
+## 除了邮件，你还可以...
+- 通过 **Discord** 联系我
+  - 55So5oi35ZCN77yaZXJpY195aA==
+- 在 **Telegram** 上和我聊天
+  - aHR0cHM6Ly90Lm1lL2Z1dXJhaWtv
+
+> 无论是哪种方式，请注明来意，友好交流~
+{: .prompt-tip }
