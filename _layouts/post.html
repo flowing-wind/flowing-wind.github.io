@@ -47,7 +47,7 @@ script_includes:
         <div class="mt-3 mb-3">
           <img {{ src }} {{ class }} {{ alt }} {{ lqip }} w="1200" h="630" style="object-fit: fill">   <!-- w="1200" h="630" -->
           {%- if page.image.alt -%}
-            <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
+            <figcaption class="text-center pt-2 pb-2" style="white-space: pre-line;">{{ page.image.alt }}</figcaption>
           {%- endif -%}
         </div>
       {% endif %}
