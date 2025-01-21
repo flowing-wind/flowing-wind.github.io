@@ -9,7 +9,7 @@
 
 - type: storage
   icon: "fas fa-folder"
-  url: "107.172.180.226:5244/"
+  url: "https://107.172.180.226:5244/"
 
 - type: rss
   icon: "fas fa-rss"
