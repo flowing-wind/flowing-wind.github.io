@@ -3,16 +3,13 @@
 - type: github
   icon: "fab fa-github"
 
-# - type: twitter
-#   icon: "fa-brands fa-x-twitter"
-
-- type: reddit
-  icon: 'fa-brands fa-reddit'
-  url: 'https://www.reddit.com/user/Fit_Salamander_4292/'      # Fill with your Reddit profile link
-
 - type: email
   icon: "fas fa-envelope"
   noblank: true # open link in current tab
+
+- type: storage
+  icon: "fas fa-folder"
+  url: "http://107.172.180.226:5244/"
 
 - type: rss
   icon: "fas fa-rss"
