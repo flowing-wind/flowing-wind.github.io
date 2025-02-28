@@ -23,6 +23,3 @@ This is Flowing-Wind, and welcome to the blog!
   - 55So5oi35ZCN77yaZXJpY195aA==
 - 在 **Telegram** 上和我聊天
   - aHR0cHM6Ly90Lm1lL2Z1dXJhaWtv
-
-> 无论是哪种方式，请注明来意，友好交流~
-{: .prompt-tip }
